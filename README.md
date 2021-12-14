@@ -2,7 +2,7 @@
 
 Singular Value Decomposition(SVD) is a very strong tool. Every matrix can be decomposed into three different matrices comprising. Suppose we have a matrix A then A=U S V. Now if we have a video of 30 seconds and we decompose it into frames of 30 fps. So total we have 900 frames. 
 A class named "SVD_comp" is created. The members are as below
-# Member functions: 
+# Member functions and Working of each: 
 i) constructors: Takes path---> path where video shall be stored , 
   image_cap_path----> path to store the image frames, 
   imr---> red layer storing path,
