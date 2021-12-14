@@ -13,8 +13,11 @@ i) constructors: Takes path---> path where video shall be stored ,
   storage_path---> the path where the final video to be stored,
   partition parameters----> This is check or flag variable. If the images are already converted to frames then the value is set to False. But if original video is provided and the   frame dissociation is not done, then set it to True.
 To preserve abstraction, our constructor will call the subsequent functions.
+
 ii) partition_video()---> This function does not accept any parameter and is actually designed to convert the video into frames by sampling at 30 frames per second. It actually can create an extra frame which is actually blank. So it is deleted. 
+
 iii) capturing_image_data() ----> This is a non-parameterized function. In this function, we actually read all the frames one by one. Resize it into 100 x 100 images.(As higher dimensions require more processing power). Now we read the images from the path where the frames were stored. Now after reading the images, it is dissociated into Red , Blue and Green layer matrices. imgr---> gives red layer matrix value, imgg---> gives green layer matrix value, imgb---> gives blue layer matrix value.
+
 iv) svd_compression()--> Takes 2 parameter image_vec_mat i.e. the image vector matrix and the name of the channel it is considering i.e. Red, Green Blue (RGB). After that we have obtained the image matrices for all three layers, we reshape it appropriately and then apply Singular Value Decomposition on it. If suppose M is my original matrix. svd(M) returns 3 matrices U S V. U and V are 2 unitary matrices where U= eigen vector matrix(transpose(M) * M) and V = eigen vector matrix( M * transpose(M) ). S= diagonal matrix. Now we extract the maximum n components from S array which will signify my most important components in the matrix that produces the maximum information. Now those values that are already selected are converted into a very high negative value, here -1000 so that they are not repeated again and again.
 
 After doing these, we find the final compression of the video frames. Also we display the amount of error that took place after reconstruction. 
